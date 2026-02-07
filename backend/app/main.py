@@ -30,3 +30,7 @@ app.include_router(skills.router, prefix="/skills", tags=["skills"])
 @app.get("/health")
 def health():
     return {"status": "ok"}
+@app.get("/")
+def root():
+    return {"message": "Portfolio API is running", "routes": [r.path for r in app.routes]}
+
