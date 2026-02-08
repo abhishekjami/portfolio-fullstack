@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: portfolio-api
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: bash start.sh
+    envVars:
+      - key: FRONTEND_ORIGIN
+        value: https://YOUR_VERCEL_DOMAIN
+      - key: DATABASE_URL
+        value: sqlite:///./portfolio.db
