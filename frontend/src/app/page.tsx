@@ -1,6 +1,7 @@
 import { getProjects, getSkills } from "@/lib/api";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SkillGroup } from "@/components/SkillGroup";
+import { ExtracurricularSection } from "@/components/ExtracurricularSection";
 
 export default async function Home() {
   const [projects, skills] = await Promise.all([getProjects(), getSkills()]);
@@ -61,6 +62,8 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      <ExtracurricularSection />
 
       {/* Skills */}
       <section className="mt-12">

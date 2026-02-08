@@ -1,0 +1,17 @@
+<svg width="960" height="540" viewBox="0 0 960 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ede9fe" />
+      <stop offset="100%" stop-color="#c4b5fd" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" rx="48" fill="url(#bg)" />
+  <rect x="110" y="80" width="740" height="380" rx="32" fill="white" opacity="0.95" />
+  <rect x="170" y="150" width="260" height="220" rx="24" fill="#ddd6fe" />
+  <rect x="470" y="190" width="290" height="30" rx="15" fill="#a5b4fc" />
+  <rect x="470" y="240" width="250" height="30" rx="15" fill="#c7d2fe" />
+  <rect x="470" y="290" width="270" height="30" rx="15" fill="#e0e7ff" />
+  <path d="M250 190V300" stroke="#7c3aed" stroke-width="10" stroke-linecap="round" />
+  <path d="M210 250L250 300L310 230" stroke="#4c1d95" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="170" y="130" font-family="Arial" font-size="28" fill="#4c1d95">Speaker Series</text>
+</svg>
