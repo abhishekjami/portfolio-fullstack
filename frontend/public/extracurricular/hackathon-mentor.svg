@@ -1,0 +1,19 @@
+<svg width="960" height="540" viewBox="0 0 960 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fef9c3" />
+      <stop offset="100%" stop-color="#fde68a" />
+    </linearGradient>
+  </defs>
+  <rect width="960" height="540" rx="48" fill="url(#bg)" />
+  <rect x="90" y="90" width="780" height="360" rx="36" fill="white" opacity="0.95" />
+  <circle cx="260" cy="270" r="90" fill="#f97316" />
+  <circle cx="260" cy="270" r="52" fill="#fff7ed" />
+  <rect x="380" y="210" width="360" height="40" rx="20" fill="#fed7aa" />
+  <rect x="380" y="270" width="280" height="40" rx="20" fill="#fdba74" />
+  <rect x="380" y="330" width="220" height="40" rx="20" fill="#fca5a5" />
+  <path d="M260 200L280 160" stroke="#fff7ed" stroke-width="10" stroke-linecap="round" />
+  <path d="M260 200L240 160" stroke="#fff7ed" stroke-width="10" stroke-linecap="round" />
+  <path d="M260 190L260 140" stroke="#fff7ed" stroke-width="10" stroke-linecap="round" />
+  <text x="120" y="140" font-family="Arial" font-size="28" fill="#7c2d12">Hackathon Mentorship</text>
+</svg>
