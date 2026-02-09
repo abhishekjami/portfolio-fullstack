@@ -1,0 +1,1 @@
+Full-stack personal portfolio showcasing my work in Data Analytics, BI, and Machine Learning. Built with Next.js, FastAPI, and SQLite, and deployed on Vercel and Render. Features real projects, skills, and extracurricular work, with a clean UI and production-ready architecture.
