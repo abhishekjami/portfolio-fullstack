@@ -19,7 +19,7 @@ export default async function Home() {
         <div className="lg:col-span-7 space-y-3">
           <h1 className="text-4xl font-bold tracking-tight">Abhishek Jami</h1>
           <p className="text-zinc-400">
-            Data Analytics • BI • ML — building dashboards and models that drive decisions.
+            Analytics | Software | Product
           </p>
 
           <div className="flex flex-wrap gap-4 text-sm">
@@ -66,8 +66,12 @@ export default async function Home() {
       <section className="mt-12 md:mt-16 lg:mt-20">
         <h2 className="text-2xl font-semibold">About</h2>
         <p className="mt-3 text-zinc-400 max-w-3xl">
-          I’m a graduate student focused on analytics, dashboards, and ML projects. I enjoy turning messy data into
-          insights and building products that stakeholders actually use.
+          I’m a graduate student at Northeastern University pursuing Data Analytics Engineering, I am also a Graduate Student Ambassador for my college and a Teaching Assisstant 
+          for the course IE6600: Computation and Visualization. I perviously Worked in Telecommunication Domain for Samsung Electronics , and my Major contribution was in 4G and 5G 
+          Deployment and Optimization of systems, I worked on root cause analysis, optimization solutions for KPI improvement and Automation. Primarily my experience built skills on 
+          Distributed Systems , Networking , Data Analysis and Automation. I enjoy collaborative work with different teams , since I get to learn about different roles of individual
+          and how it shapes the business. I love to improve a system or product to achieve high effciency and quality for the customers. And I am seeking to work as an Analytics Engineer, 
+          Product Manager or Software engineering role.  
         </p>
       </section>
 
@@ -101,7 +105,8 @@ export default async function Home() {
         <p className="mt-2 text-zinc-400">
           Email: {" "}
           <a className="underline" href="mailto:abhishekjami@gmail.com">
-            abhishekjami@gmail.com
+            Personal Email: abhishekjami1999@gmail.com
+            School Email: jami.ab@northeastern.edu
           </a>
         </p>
       </section>
