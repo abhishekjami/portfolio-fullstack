@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Press_Start_2P, VT323 } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const pressStart2P = Press_Start_2P({
+  variable: "--font-pixel",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const vt323 = VT323({
+  variable: "--font-vt323",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata = {
@@ -25,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${pressStart2P.variable} ${vt323.variable}`}>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {children}
         </div>

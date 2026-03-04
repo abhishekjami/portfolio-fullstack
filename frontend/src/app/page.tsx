@@ -3,6 +3,14 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { SkillGroup } from "@/components/SkillGroup";
 import { ExtracurricularSection } from "@/components/ExtracurricularSection";
 
+const STATS = [
+  { label: "DATA ANALYTICS", val: 92 },
+  { label: "MACHINE LEARNING", val: 85 },
+  { label: "VISUALIZATION", val: 88 },
+  { label: "SQL / DATABASES", val: 90 },
+  { label: "PYTHON", val: 87 },
+];
+
 export default async function Home() {
   const [projects, skills] = await Promise.all([getProjects(), getSkills()]);
 
@@ -13,106 +21,252 @@ export default async function Home() {
   }, {});
 
   return (
-    <main className="py-12">
-      {/* Hero */}
-      <section className="lg:grid lg:grid-cols-12 lg:items-start gap-8">
-        <div className="lg:col-span-7 space-y-3">
-          <h1 className="text-4xl font-bold tracking-tight">Abhishek Jami</h1>
-          <p className="text-zinc-400">
-            Analytics | Software | Product
-          </p>
+    <main className="py-12 crt-flicker">
 
-          <div className="flex flex-wrap gap-4 text-sm">
-            <a
-              className="underline"
-              href="https://github.com/abhishekjami"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-            <a
-              className="underline"
-              href="https://www.linkedin.com/in/abhishekjami"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a className="underline" href="/resume.pdf" target="_blank" rel="noreferrer">
-              Resume
-            </a>
-          </div>
+      {/* ── HERO ── */}
+      <section
+        className="pixel-border p-6 sm:p-8 relative"
+        style={{ background: "var(--card-bg)" }}
+      >
+        {/* Top bar */}
+        <div
+          className="flex justify-between items-center mb-6 pb-3"
+          style={{ borderBottom: "1px solid rgba(0,255,65,0.2)" }}
+        >
+          <span
+            className="glow-pink"
+            style={{ fontFamily: "var(--font-pixel)", fontSize: "8px" }}
+          >
+            ◆ PLAYER 1 PROFILE
+          </span>
+          <span
+            className="blink glow-green"
+            style={{ fontFamily: "var(--font-pixel)", fontSize: "8px" }}
+          >
+            ■ ONLINE
+          </span>
         </div>
 
-        {/* Right visual / decorative column for large screens */}
-        <div className="hidden lg:flex lg:col-span-5 items-start">
-          <div className="w-full h-full rounded-2xl bg-gradient-to-br from-blue-950/30 via-blue-900/20 to-transparent ring-1 ring-blue-400/20 p-6 shadow-xl backdrop-blur-md">
-            <div className="flex h-full flex-col justify-center items-start gap-4">
-              <div className="rounded-lg bg-gradient-to-tr from-blue-800/60 to-blue-700/30 p-4 shadow-inner w-full">
-                <h3 className="text-xl font-semibold text-blue-50">Featured</h3>
-                <p className="mt-2 text-sm text-blue-100/70">Selected projects and highlights shown below.</p>
-              </div>
-              <div className="mt-2 w-full grid grid-cols-2 gap-3">
-                <div className="h-14 rounded-lg bg-gradient-to-r from-blue-700/40 to-slate-800/20" />
-                <div className="h-14 rounded-lg bg-gradient-to-r from-slate-800/20 to-blue-700/30" />
-              </div>
+        <div className="grid gap-8 lg:grid-cols-2">
+          {/* Left — Identity */}
+          <div className="space-y-5">
+            <div>
+              <p
+                className="glow-pink mb-2"
+                style={{ fontFamily: "var(--font-pixel)", fontSize: "8px" }}
+              >
+                CHARACTER NAME:
+              </p>
+              <h1
+                className="glow-green"
+                style={{
+                  fontFamily: "var(--font-pixel)",
+                  fontSize: "clamp(16px, 3.5vw, 26px)",
+                  lineHeight: 1.6,
+                }}
+              >
+                ABHISHEK
+                <br />
+                JAMI
+              </h1>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <span className="retro-tag">ANALYTICS</span>
+              <span
+                className="retro-tag"
+                style={{
+                  borderColor: "var(--secondary)",
+                  color: "var(--secondary)",
+                  textShadow: "0 0 4px var(--secondary)",
+                }}
+              >
+                SOFTWARE
+              </span>
+              <span
+                className="retro-tag"
+                style={{
+                  borderColor: "var(--accent)",
+                  color: "var(--accent)",
+                  textShadow: "0 0 4px var(--accent)",
+                }}
+              >
+                PRODUCT
+              </span>
+            </div>
+
+            <p style={{ color: "var(--foreground)", opacity: 0.75, fontSize: "20px", lineHeight: 1.6 }}>
+              Building dashboards and models that drive decisions.
+              <br />
+              Turning messy data into insights since 2020.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://github.com/abhishekjami"
+                target="_blank"
+                rel="noreferrer"
+                className="pixel-btn"
+              >
+                ◆ GITHUB
+              </a>
+              <a
+                href="https://www.linkedin.com/in/abhishekjami"
+                target="_blank"
+                rel="noreferrer"
+                className="pixel-btn pixel-btn-pink"
+              >
+                ◆ LINKEDIN
+              </a>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                className="pixel-btn pixel-btn-yellow"
+              >
+                ◆ RESUME
+              </a>
             </div>
           </div>
+
+          {/* Right — Stats */}
+          <div
+            className="space-y-4"
+            style={{
+              borderLeft: "1px solid rgba(0,255,65,0.2)",
+              paddingLeft: "2rem",
+            }}
+          >
+            <p
+              className="glow-pink mb-4"
+              style={{ fontFamily: "var(--font-pixel)", fontSize: "8px" }}
+            >
+              POWER LEVELS:
+            </p>
+            {STATS.map(({ label, val }) => (
+              <div key={label}>
+                <div
+                  className="flex justify-between mb-1"
+                  style={{
+                    fontFamily: "var(--font-pixel)",
+                    fontSize: "7px",
+                    color: "var(--foreground)",
+                  }}
+                >
+                  <span>{label}</span>
+                  <span className="glow-yellow">{val}</span>
+                </div>
+                <div
+                  style={{
+                    height: "8px",
+                    background: "rgba(0,255,65,0.1)",
+                    border: "1px solid rgba(0,255,65,0.3)",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: `${val}%`,
+                      height: "100%",
+                      background: "var(--primary)",
+                      boxShadow: "0 0 8px var(--primary)",
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* About */}
-      <section className="mt-12 md:mt-16 lg:mt-20">
-        <h2 className="text-2xl font-semibold">About</h2>
-        <p className="mt-3 text-zinc-400 max-w-3xl">
-          I’m a graduate student at Northeastern University pursuing Data Analytics Engineering, I am also a Graduate Student Ambassador for my college and a Teaching Assisstant 
-          for the course IE6600: Computation and Visualization. I perviously Worked in Telecommunication Domain for Samsung Electronics , and my Major contribution was in 4G and 5G 
-          Deployment and Optimization of systems, I worked on root cause analysis, optimization solutions for KPI improvement and Automation. Primarily my experience built skills on 
-          Distributed Systems , Networking , Data Analysis and Automation. I enjoy collaborative work with different teams , since I get to learn about different roles of individual
-          and how it shapes the business. I love to improve a system or product to achieve high effciency and quality for the customers. And I am seeking to work as an Analytics Engineer, 
-          Product Manager or Software engineering role.  
-        </p>
+      {/* ── ABOUT ── */}
+      <section className="mt-16">
+        <h2 className="retro-section-title mb-6">ABOUT_ME.txt</h2>
+        <div className="pixel-border p-5" style={{ background: "var(--card-bg)" }}>
+          <p
+            style={{
+              color: "var(--foreground)",
+              fontSize: "20px",
+              lineHeight: 1.75,
+              maxWidth: "72ch",
+            }}
+          >
+            <span className="glow-green">&gt; </span>
+            I&apos;m a graduate student at Northeastern University pursuing Data Analytics
+            Engineering. I am also a Graduate Student Ambassador and a Teaching Assistant for
+            IE6600: Computation and Visualization. Previously, I worked in the Telecommunication
+            domain at Samsung Electronics on 4G &amp; 5G deployment, optimization, root cause
+            analysis, and automation. My experience spans Distributed Systems, Networking, Data
+            Analysis, and Automation. I&apos;m seeking roles in Analytics Engineering, Product
+            Management, or Software Engineering.
+          </p>
+        </div>
       </section>
 
-      {/* Projects */}
-      <section className="mt-12 md:mt-16 lg:mt-20">
-        <h2 className="text-2xl font-semibold">Projects</h2>
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* ── PROJECTS ── */}
+      <section className="mt-16">
+        <h2 className="retro-section-title mb-6">MISSIONS_LOG</h2>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <ProjectCard key={p.id} p={p} />
           ))}
         </div>
       </section>
 
-      <div className="mt-12 md:mt-16 lg:mt-20">
+      {/* ── EXTRACURRICULAR ── */}
+      <div className="mt-16">
         <ExtracurricularSection />
       </div>
 
-      {/* Skills */}
-      <section className="mt-12 md:mt-16 lg:mt-20">
-        <h2 className="text-2xl font-semibold">Skills</h2>
-        <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* ── SKILLS ── */}
+      <section className="mt-16">
+        <h2 className="retro-section-title mb-6">SKILL_TREE</h2>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {Object.entries(grouped).map(([cat, list]) => (
             <SkillGroup key={cat} title={cat} skills={list} />
           ))}
         </div>
       </section>
 
-      {/* Contact */}
-      <section className="mt-12 md:mt-16 lg:mt-20 rounded-2xl border p-6 shadow-sm">
-        <h2 className="text-2xl font-semibold">Contact</h2>
-        <p className="mt-2 text-zinc-400">
-          Email: {" "}
-          <a className="underline" href="mailto:abhishekjami@gmail.com">
-            Personal Email: abhishekjami1999@gmail.com
-            School Email: jami.ab@northeastern.edu
-          </a>
-        </p>
+      {/* ── CONTACT ── */}
+      <section className="mt-16">
+        <h2 className="retro-section-title mb-6">CONTACT_FORM</h2>
+        <div className="pixel-border p-6 space-y-3" style={{ background: "var(--card-bg)" }}>
+          <p style={{ fontSize: "20px", color: "var(--foreground)" }}>
+            <span className="glow-pink">&gt; </span>
+            PERSONAL:{" "}
+            <a
+              href="mailto:abhishekjami1999@gmail.com"
+              className="glow-yellow"
+              style={{ textDecoration: "underline" }}
+            >
+              abhishekjami1999@gmail.com
+            </a>
+          </p>
+          <p style={{ fontSize: "20px", color: "var(--foreground)" }}>
+            <span className="glow-pink">&gt; </span>
+            SCHOOL:{" "}
+            <a
+              href="mailto:jami.ab@northeastern.edu"
+              className="glow-yellow"
+              style={{ textDecoration: "underline" }}
+            >
+              jami.ab@northeastern.edu
+            </a>
+          </p>
+        </div>
       </section>
 
-      <footer className="mt-12 text-sm text-zinc-500">
-        © {new Date().getFullYear()} Abhishek Jami
+      {/* ── FOOTER ── */}
+      <footer
+        className="mt-16 pb-8 text-center"
+        style={{
+          fontFamily: "var(--font-pixel)",
+          fontSize: "8px",
+          color: "var(--dim)",
+        }}
+      >
+        <span className="blink">█</span> © {new Date().getFullYear()} ABHISHEK JAMI — ALL RIGHTS
+        RESERVED <span className="blink">█</span>
       </footer>
     </main>
   );

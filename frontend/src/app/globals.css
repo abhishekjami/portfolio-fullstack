@@ -1,26 +1,232 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050510;
+  --foreground: #c8ffc8;
+  --primary: #00ff41;
+  --secondary: #ff0090;
+  --accent: #ffe600;
+  --cyan: #00e5ff;
+  --card-bg: #0a0a1a;
+  --dim: #4a7a4a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-vt323), monospace;
+  --font-mono: var(--font-pixel), monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-vt323), 'Courier New', monospace;
+  font-size: 20px;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* CRT Scanlines */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* CRT vignette */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--background); }
+::-webkit-scrollbar-thumb { background: var(--primary); box-shadow: 0 0 6px var(--primary); }
+
+/* Headings use pixel font */
+h1, h2, h3 {
+  font-family: var(--font-pixel), 'Courier New', monospace;
+  letter-spacing: -0.02em;
+}
+
+/* =================== Pixel Borders =================== */
+
+.pixel-border {
+  border: 2px solid var(--primary);
+  box-shadow:
+    4px 4px 0 rgba(0, 255, 65, 0.35),
+    0 0 18px rgba(0, 255, 65, 0.15),
+    inset 0 0 18px rgba(0, 255, 65, 0.03);
+}
+
+.pixel-border-pink {
+  border: 2px solid var(--secondary);
+  box-shadow:
+    4px 4px 0 rgba(255, 0, 144, 0.35),
+    0 0 18px rgba(255, 0, 144, 0.15),
+    inset 0 0 18px rgba(255, 0, 144, 0.03);
+}
+
+.pixel-border-cyan {
+  border: 2px solid var(--cyan);
+  box-shadow:
+    4px 4px 0 rgba(0, 229, 255, 0.35),
+    0 0 18px rgba(0, 229, 255, 0.15);
+}
+
+/* =================== Glow Text =================== */
+
+.glow-green {
+  color: var(--primary);
+  text-shadow: 0 0 7px #00ff41, 0 0 14px #00ff41;
+}
+.glow-pink {
+  color: var(--secondary);
+  text-shadow: 0 0 7px #ff0090, 0 0 14px #ff0090;
+}
+.glow-yellow {
+  color: var(--accent);
+  text-shadow: 0 0 7px #ffe600, 0 0 14px #ffe600;
+}
+.glow-cyan {
+  color: var(--cyan);
+  text-shadow: 0 0 7px #00e5ff, 0 0 14px #00e5ff;
+}
+
+/* =================== Animations =================== */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.blink { animation: blink 1s step-end infinite; }
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.75; }
+  94% { opacity: 1; }
+  96% { opacity: 0.85; }
+  97% { opacity: 1; }
+}
+.crt-flicker { animation: flicker 9s infinite; }
+
+@keyframes scanline-move {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* =================== Pixel Button =================== */
+
+.pixel-btn {
+  display: inline-block;
+  font-family: var(--font-pixel), 'Courier New', monospace;
+  font-size: 9px;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 8px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--primary);
+  transition: transform 0.08s, box-shadow 0.08s, background 0.08s, color 0.08s;
+  white-space: nowrap;
+  line-height: 1;
+}
+.pixel-btn:hover {
+  background: var(--primary);
+  color: var(--background);
+  box-shadow: 1px 1px 0 rgba(0, 255, 65, 0.5);
+  transform: translate(2px, 2px);
+}
+.pixel-btn:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+.pixel-btn-pink {
+  color: var(--secondary);
+  border-color: var(--secondary);
+  box-shadow: 3px 3px 0 var(--secondary);
+}
+.pixel-btn-pink:hover {
+  background: var(--secondary);
+  color: var(--background);
+  box-shadow: 1px 1px 0 rgba(255, 0, 144, 0.5);
+}
+
+.pixel-btn-yellow {
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 3px 3px 0 var(--accent);
+}
+.pixel-btn-yellow:hover {
+  background: var(--accent);
+  color: var(--background);
+  box-shadow: 1px 1px 0 rgba(255, 230, 0, 0.5);
+}
+
+/* =================== Section Title =================== */
+
+.retro-section-title {
+  font-family: var(--font-pixel), 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--primary);
+  text-shadow: 0 0 7px #00ff41, 0 0 14px #00ff41;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  line-height: 1.6;
+}
+.retro-section-title::before {
+  content: '//';
+  color: var(--secondary);
+  text-shadow: 0 0 7px #ff0090;
+  flex-shrink: 0;
+}
+.retro-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--primary), transparent);
+  box-shadow: 0 0 4px var(--primary);
+}
+
+/* =================== Retro Tag =================== */
+
+.retro-tag {
+  font-family: var(--font-pixel), 'Courier New', monospace;
+  font-size: 7px;
+  padding: 4px 8px;
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  background: rgba(0, 229, 255, 0.05);
+  text-shadow: 0 0 4px var(--cyan);
+  display: inline-block;
+  line-height: 1.4;
 }

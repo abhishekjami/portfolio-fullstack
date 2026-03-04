@@ -2,30 +2,78 @@ import { Project } from "@/lib/api";
 
 export function ProjectCard({ p }: { p: Project }) {
   return (
-    <div className="rounded-2xl border p-5 shadow-sm">
-      <div className="flex items-start justify-between gap-3">
-        <h3 className="text-lg font-semibold">{p.title}</h3>
+    <div
+      className="pixel-border p-5 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,65,0.25)]"
+      style={{ background: "var(--card-bg)" }}
+    >
+      {/* Header */}
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <div className="flex-1 min-w-0">
+          <p
+            className="glow-pink mb-2"
+            style={{ fontFamily: "var(--font-pixel)", fontSize: "7px" }}
+          >
+            ◆ MISSION
+          </p>
+          <h3
+            className="glow-green"
+            style={{
+              fontFamily: "var(--font-pixel)",
+              fontSize: "10px",
+              lineHeight: 1.7,
+            }}
+          >
+            {p.title}
+          </h3>
+        </div>
         <a
-          className="text-sm underline"
           href={p.github_url}
           target="_blank"
           rel="noreferrer"
+          className="pixel-btn flex-shrink-0"
+          style={{ fontSize: "7px", padding: "5px 8px" }}
         >
-          GitHub
+          CODE
         </a>
       </div>
 
-      <p className="mt-2 text-sm text-zinc-600">{p.description}</p>
+      {/* Description */}
+      <p
+        style={{
+          color: "var(--foreground)",
+          opacity: 0.75,
+          fontSize: "18px",
+          lineHeight: 1.55,
+          marginBottom: "14px",
+        }}
+      >
+        {p.description}
+      </p>
 
-      <div className="mt-3 flex flex-wrap gap-2">
-        {p.tech_stack.map((t) => (
-          <span
-            key={t}
-            className="rounded-full border px-3 py-1 text-xs"
-          >
-            {t}
-          </span>
-        ))}
+      {/* Tech stack */}
+      <div
+        style={{
+          borderTop: "1px solid rgba(0,255,65,0.2)",
+          paddingTop: "10px",
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "var(--font-pixel)",
+            fontSize: "7px",
+            color: "var(--dim)",
+            marginBottom: "8px",
+          }}
+        >
+          TECH_STACK:
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {p.tech_stack.map((t) => (
+            <span key={t} className="retro-tag">
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
